@@ -9,36 +9,42 @@ import java.util.Scanner;
 public class CinemaxifyApplication {
 
 	public static void main(String[] args) {
-//
-//		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-//		Scanner scanner = new Scanner(System.in);
-//		System.out.println("Welcome to the Cinemaxify Application");
-//		System.out.println("Please select the member you want the plan for:");
-//		System.out.println("1. Self\n2. Spouse");
-//		String userType = "";
-//		int userChoice = scanner.nextInt();
-//		scanner.nextLine();
-//		switch (userChoice) {
-//		  case 1 -> {
-//			  // a. Set userType according to the userChoice.
-//		  }
-//		  case 2 -> {
-//			  // b. Set userType according to the userChoice.
-//		  }
-//		  case 3 -> {
-//			  // c. Print Exiting... and return
-//				    }
-//		  default -> {
-//			  // d. Print "invalid choice" and return.
-//
-//				     }
-//		}
-//		// e. Pick the user bean using context.getBean().
-//			User user = ;
-//		// f. Take input for User details i.e. name , age, address etc.
-//
-//		// g. Set the above fetched details into the user by using appropriate method.
-//
-//		// h. finally print the details by using appropriate method.
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Welcome to the Cinemaxify Application");
+		System.out.println("Please select the member you want the plan for:");
+		System.out.println("1. Self\n2. Spouse");
+		String userType = "";
+		int userChoice = scanner.nextInt();
+		switch (userChoice) {
+		  case 1 -> userType="self";
+		  case 2 -> userType="spouse";
+		  case 3 -> {
+			  System.out.println("Exiting...");
+			  return;
+			  // c. Print Exiting... and return
+				    }
+		  default -> {
+			  System.out.println("invalid choice");
+			  return;
+			  // d. Print "invalid choice" and return.
+				     }
+		}
+		// e. Pick the user bean using context.getBean().
+			User user = (User) context.getBean(userType);
+		// f. Take input for User details i.e. name , age, address etc.
+			System.out.println("enter name");
+			String name = scanner.next();
+			System.out.println("enter age");
+			int age = scanner.nextInt();
+		System.out.println("enter contact");
+			Long contact = scanner.nextLong();
+			scanner.nextLine();
+		System.out.println("enter address");
+			String address = scanner.nextLine();
+		// g. Set the above fetched details into the user by using appropriate method.
+			user.setUserDetails(name,age,contact,address);
+			user.getUserDetails();
+		// h. finally print the details by using appropriate method.
 			}
 	}
